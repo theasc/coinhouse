@@ -1,20 +1,23 @@
-import {StyleSheet, Text, View} from "react-native";
-import React, { useState, useEffect} from "react";
+import {Button} from '@ui-kitten/components';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import {Button} from "@ui-kitten/components";
-import {LookUp, LookUpNav} from "../../navigator/screenName";
-import {$t} from "../../locales";
+import React, { useEffect, useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {$t} from '../../locales';
+import {IQRScanProps} from '../../models/props/screens/qrScanProps.type';
+import {LookUp, LookUpNav} from '../../navigator/screenName';
+import {getGasPrice} from "../../services/transaction.services";
 
-function QRScanScreen(props) {
+function QRScanScreen(props: IQRScanProps) {
     const [hasPermission, setHasPermission] = useState(null);
     const [scannedData, setScannedData] = useState(null);
-
     useEffect(() => {
-        (async () => {
+        const unsubscribe = props.navigation.addListener('focus', async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
             setHasPermission(status === 'granted');
-        })();
-    }, []);
+        });
+
+        return unsubscribe;
+    }, [props.navigation]);
 
     const handleBarCodeScanned = ({ type, data }) => {
         setScannedData(data);
@@ -23,13 +26,15 @@ function QRScanScreen(props) {
 
     const onReScan = () => {
         setScannedData(null);
-    }
+    };
 
     const onLookup = () => {
+        props.updateSearch(scannedData);
+        props.searchTransaction(scannedData);
         setScannedData(null);
         const params: any = {screen: LookUp, params: { lookupQRCode: scannedData }};
         props.navigation.navigate(LookUpNav, params);
-    }
+    };
 
     if (hasPermission === null) {
         return <Text>Requesting for camera permission</Text>;
@@ -52,14 +57,12 @@ function QRScanScreen(props) {
                         </Text>
                     </View>
                     <View
-                        style={s.cancelButton}>
+                        style={s.actionsContainer}>
                         <View style={s.flex1}>
                             <Button style={s.actionButton} onPress={onReScan} >{$t('screen.qrScan.reScan')}</Button>
                         </View>
                         <View style={s.flex1}>
-                            <Button style={s.actionButton} onPress={onLookup}>
-                                {$t('screen.qrScan.lookup')}
-                            </Button>
+                            <Button style={s.actionButton} onPress={onLookup}>{$t('screen.qrScan.lookup')}</Button>
                         </View>
                     </View>
                 </View>
@@ -74,7 +77,7 @@ const s = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#000',
+        backgroundColor: '#000'
     },
     bottomBar: {
         position: 'absolute',
@@ -82,29 +85,24 @@ const s = StyleSheet.create({
         left: 0,
         right: 0,
         backgroundColor: 'rgba(0,0,0,0.5)',
-
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
     url: {
-        flex: 1,
+        flex: 1
     },
     urlText: {
         color: '#fff',
         fontSize: 12,
-        textAlign: "center",
-        paddingVertical: 10,
+        textAlign: 'center',
+        paddingVertical: 10
     },
-    cancelButton: {
+    actionsContainer: {
         padding: 20,
         flexDirection: 'row',
         backgroundColor: '#0a0f28',
-        justifyContent: "center"
+        justifyContent: 'center'
     },
-    cancelButtonText: {
-        color: 'rgba(255,255,255,0.8)',
-        fontSize: 18,
-    },
-    actionButton : {width: '90%', backgroundColor: 'black', alignSelf: "center"},
+    actionButton : {width: '90%', backgroundColor: 'black', alignSelf: 'center'}
 });
 
 export default QRScanScreen;

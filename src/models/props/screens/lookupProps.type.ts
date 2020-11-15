@@ -1,16 +1,17 @@
-import {IStackNavigationScreenProps} from "../navigator/stackNavigationScreenProps.type";
-import {ITransaction} from "../../transactions/transaction.type";
-import {RouteProp} from "@react-navigation/native";
-import {LookupStackParamList} from "../../navigator/stacksParamList.type";
-import {LookUp} from "../../../navigator/screenName";
+import {RouteProp} from '@react-navigation/native';
+import {LookUp} from '../../../navigator/screenName';
+import {LookupStackParamList} from '../../navigator/stacksParamList.type';
+import {ITransaction} from '../../transactions/transaction.type';
+import {IStackNavigationScreenProps} from '../navigator/stackNavigationScreenProps.type';
 
-type LookupScreenRouteProps = RouteProp<LookupStackParamList, typeof LookUp>
+type LookupScreenRouteProps = RouteProp<LookupStackParamList, typeof LookUp>;
 
-export interface ILookupProps extends IStackNavigationScreenProps{
-    route: LookupScreenRouteProps,
-    transactionValue?: string,
-    transactions?: [ITransaction],
-    error?: string,
-    updateSearch?: (searchValue: string) => void,
-    searchTransaction?: (toSearch) => void,
+export interface ILookupProps extends IStackNavigationScreenProps {
+    route: LookupScreenRouteProps;
+    transactionValue?: string;
+    transactions?: [ITransaction];
+    error?: string;
+    updateSearch?: (searchValue: string) => void;
+    searchTransaction?: (toSearch) => void;
+    loading?: boolean;
 }

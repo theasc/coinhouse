@@ -1,11 +1,11 @@
 import {all, call, put, takeLatest} from 'redux-saga/effects';
-import TransactionTypes from "./transactions.types";
-import {getTransactionWithAddress} from "../../services/transaction.services";
-import {ITransaction} from "../../models/transactions/transaction.type";
-import {searchTransactionsFailure, searchTransactionsSuccess} from "./transactions.actions";
+import {ITransaction} from '../../models/transactions/transaction.type';
+import {getTransactionWithAddress} from '../../services/transaction.services';
+import {searchTransactionsFailure, searchTransactionsSuccess} from './transactions.actions';
+import TransactionTypes from './transactions.types';
 
-export function* lookupTransactions({payload}: { type: typeof TransactionTypes.LOOKUP; payload: string; }){
-    try{
+export function* lookupTransactions({payload}: { type: typeof TransactionTypes.LOOKUP; payload: string; }) {
+    try {
         const response = yield call(getTransactionWithAddress, payload);
         const transactions: [ITransaction] = response.result;
         yield put(searchTransactionsSuccess(transactions));
@@ -14,7 +14,7 @@ export function* lookupTransactions({payload}: { type: typeof TransactionTypes.L
     }
 }
 
-export function* onLookupTransactions(){
+export function* onLookupTransactions() {
     yield takeLatest(TransactionTypes.LOOKUP, lookupTransactions);
 }
 

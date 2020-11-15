@@ -7,3 +7,8 @@ export function getTransactionWithAddress(address: string): [ITransaction] {
         const api = EtherScan.init(API_TOKEN);
         return api.account.txlist(address, 1, 'latest', 1, 100, 'asc');
 }
+
+export function getGasPrice() {
+        const api = EtherScan.init(API_TOKEN);
+        return api.stats.ethprice();
+}

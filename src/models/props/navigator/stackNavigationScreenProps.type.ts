@@ -1,5 +1,5 @@
-import {StackNavigationProp} from "@react-navigation/stack";
+import {StackNavigationProp} from '@react-navigation/stack';
 
 export interface IStackNavigationScreenProps {
-    navigation: StackNavigationProp<any>
+    navigation: StackNavigationProp<any>;
 }

@@ -1,12 +1,10 @@
-import React from 'react';
-import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {getTabBarIcon, getTabBarLabel} from "./tabBar.helper";
-import {LookUpNav, QRScanNav} from "./screenName";
-import {LookupNavigator} from "./lookup.navigator";
-import {RootStackParamList} from "../models/navigator/stacksParamList.type";
-import QRScanScreen from "../screens/qr-scan/qr-scan.component";
-
+import React from 'react';
+import {RootStackParamList} from '../models/navigator/stacksParamList.type';
+import QRScanContainer from '../screens/qr-scan/qr-scan.container';
+import {LookupNavigator} from './lookup.navigator';
+import {LookUpNav, QRScanNav} from './screenName';
+import {getTabBarIcon, getTabBarLabel} from './tabBar.helper';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -15,18 +13,18 @@ export default function TabNavigator() {
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color }) => getTabBarIcon(route, focused, color),
-                    tabBarLabel: getTabBarLabel(route),
+                    tabBarLabel: getTabBarLabel(route)
                 })}
                 tabBarOptions={{
                     activeTintColor: 'white',
                     inactiveTintColor: 'gray',
                     style: {
-                        backgroundColor: 'black',
+                        backgroundColor: 'black'
                     }
                 }}
             >
                 <Tab.Screen name={LookUpNav} component={LookupNavigator} />
-                <Tab.Screen name={QRScanNav} component={QRScanScreen} />
+                <Tab.Screen name={QRScanNav} component={QRScanContainer} />
             </Tab.Navigator>
     );
 }

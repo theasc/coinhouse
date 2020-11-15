@@ -1,20 +1,19 @@
-import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import {LookUp, TransactionDetail} from "./screenName";
-import {$t} from "../locales";
-import LookupContainer from "../screens/lookup/lookup.container";
-import TransactionDetails from "../screens/transaction-details/transaction-details.component";
-import {LookupStackParamList} from "../models/navigator/stacksParamList.type";
+import React from 'react';
+import {$t} from '../locales';
+import {LookupStackParamList} from '../models/navigator/stacksParamList.type';
+import LookupContainer from '../screens/lookup/lookup.container';
+import TransactionDetails from '../screens/transaction-details/transaction-details.component';
+import {LookUp, TransactionDetail} from './screenName';
 
 const Stack = createStackNavigator<LookupStackParamList>();
 
-
-export function LookupNavigator(){
+export function LookupNavigator() {
     return (
         <Stack.Navigator
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: 'black',
+                    backgroundColor: 'black'
                 },
                 headerTitleStyle: {
                     color: 'white'

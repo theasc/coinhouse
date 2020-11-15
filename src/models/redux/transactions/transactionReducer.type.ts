@@ -1,7 +1,8 @@
-import {ITransaction} from "../../transactions/transaction.type";
+import {ITransaction} from '../../transactions/transaction.type';
 
 export interface ITransactionReducerType {
-    search?: string,
-    transactions?: [ITransaction],
-    error?: string,
+    search?: string;
+    transactions?: [ITransaction];
+    error?: string;
+    loading?: boolean;
 }

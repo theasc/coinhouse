@@ -3,7 +3,7 @@ import i18n from 'i18n-js';
 import en from './en.json';
 
 i18n.translations = {
-    en: en,
+    en
 };
 
 i18n.locale = Localization.locale.split('-')[0];
@@ -11,4 +11,3 @@ i18n.locale = Localization.locale.split('-')[0];
 export function $t(path: string, option?: object) {
     return i18n.t(path, option);
 }
-
