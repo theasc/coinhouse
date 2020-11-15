@@ -62,5 +62,3 @@ buck-out/
 .expo/*
 web-build/
 
-#secret files
-**/**/secret.ts
