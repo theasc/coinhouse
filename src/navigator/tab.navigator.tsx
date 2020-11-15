@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {getTabBarIcon, getTabBarLabel} from "./tabBar.helper";
+import {LookUp, QRScan} from "./screenName";
 
 function HomeScreen() {
     return (
@@ -23,9 +24,21 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
     return (
-            <Tab.Navigator>
-                <Tab.Screen name="Home" component={HomeScreen} />
-                <Tab.Screen name="Settings" component={SettingsScreen} />
+            <Tab.Navigator
+                screenOptions={({ route }) => ({
+                    tabBarIcon: ({ focused, color }) => getTabBarIcon(route, focused, color),
+                    tabBarLabel: getTabBarLabel(route),
+                })}
+                tabBarOptions={{
+                    activeTintColor: 'white',
+                    inactiveTintColor: 'gray',
+                    style: {
+                        backgroundColor: 'black',
+                    }
+                }}
+            >
+                <Tab.Screen name={LookUp} component={HomeScreen} />
+                <Tab.Screen name={QRScan} component={SettingsScreen} />
             </Tab.Navigator>
     );
 }

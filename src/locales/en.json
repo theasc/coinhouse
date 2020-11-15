@@ -1,0 +1,8 @@
+{
+  "screen": {
+    "tabBar": {
+      "lookup": "Lookup",
+      "qrScan": "QRScan"
+    }
+  }
+}
