@@ -5,7 +5,6 @@ import {StyleSheet, Text, View} from 'react-native';
 import {$t} from '../../locales';
 import {IQRScanProps} from '../../models/props/screens/qrScanProps.type';
 import {LookUp, LookUpNav} from '../../navigator/screenName';
-import {getGasPrice} from "../../services/transaction.services";
 
 function QRScanScreen(props: IQRScanProps) {
     const [hasPermission, setHasPermission] = useState(null);
