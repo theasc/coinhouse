@@ -7,7 +7,8 @@
     "lookup": {
       "headerTitle": "Coinhouse Ethersan",
       "description": "Please enter a valide etherum address",
-      "lookupAction": "Lookup"
+      "lookupAction": "Lookup",
+      "resultTitle": "100 most recent transactions"
     }
   }
 }

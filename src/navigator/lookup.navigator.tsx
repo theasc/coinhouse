@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import {LookUp} from "./screenName";
+import {LookUp, TransactionDetail} from "./screenName";
 import {$t} from "../locales";
 import LookupContainer from "../screens/lookup/lookup.container";
+import TransactionDetails from "../screens/transaction-details/transaction-details.component";
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export function LookupNavigator(){
             }}
         >
             <Stack.Screen name={LookUp} component={LookupContainer} options={{title: $t('screen.lookup.headerTitle')}} />
+            <Stack.Screen name={TransactionDetail} component={TransactionDetails} options={{title: $t('screen.lookup.headerTitle')}} />
         </Stack.Navigator>
     );
 }
