@@ -6,9 +6,9 @@ i18n.translations = {
     en: en,
 };
 
-i18n.locale = Localization.locale;
+i18n.locale = Localization.locale.split('-')[0];
 
-export function $t(path: string) {
-    return i18n.t(path);
+export function $t(path: string, option?: object) {
+    return i18n.t(path, option);
 }
 

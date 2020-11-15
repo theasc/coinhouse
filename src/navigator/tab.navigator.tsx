@@ -4,17 +4,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {getTabBarIcon, getTabBarLabel} from "./tabBar.helper";
 import {LookUpNav, QRScanNav} from "./screenName";
 import {LookupNavigator} from "./lookup.navigator";
+import {RootStackParamList} from "../models/navigator/stacksParamList.type";
+import QRScanScreen from "../screens/qr-scan/qr-scan.component";
 
 
-function SettingsScreen() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Settings!</Text>
-        </View>
-    );
-}
-
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
 export default function TabNavigator() {
     return (
@@ -32,7 +26,7 @@ export default function TabNavigator() {
                 }}
             >
                 <Tab.Screen name={LookUpNav} component={LookupNavigator} />
-                <Tab.Screen name={QRScanNav} component={SettingsScreen} />
+                <Tab.Screen name={QRScanNav} component={QRScanScreen} />
             </Tab.Navigator>
     );
 }

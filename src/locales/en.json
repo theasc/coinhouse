@@ -9,6 +9,16 @@
       "description": "Please enter a valide etherum address",
       "lookupAction": "Lookup",
       "resultTitle": "100 most recent transactions"
+    },
+    "transactionDetails": {
+      "headerTitle": "Transaction Details"
+    },
+    "qrScan": {
+      "headerTitle": "QRScanner",
+      "reScan": "Re:Scan",
+      "lookup": "Lookup",
+      "address": "Address",
+      "alert": "Bar code with type {{type}} and data {{data}} has been scanned!"
     }
   }
 }

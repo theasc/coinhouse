@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {StyleSheet, Text, View, FlatList, ScrollView, Image, TouchableOpacity} from "react-native";
 import {$t} from "../../locales";
 import {Button, Input} from "@ui-kitten/components";
@@ -7,7 +7,14 @@ import {Assets} from "../../definitions/assets";
 import {TransactionDetail} from "../../navigator/screenName";
 
 const LookupScreen = (props: ILookupProps) => {
-    console.log("errrrr",  props);
+    const lookupQRCode = props.route?.params?.lookupQRCode;
+    useEffect(() => {
+        if(lookupQRCode && lookupQRCode !== props.transactionValue){
+            props.updateSearch(lookupQRCode);
+            props.searchTransaction(lookupQRCode);
+        }
+    }, [lookupQRCode]);
+
     return (
         <View style={s.container}>
             <View style={s.contentContainer}>
