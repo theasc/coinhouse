@@ -1,13 +1,13 @@
 import React from 'react';
 import { Image } from "react-native";
-import {LookUp, QRScan} from "./screenName";
+import {LookUpNav, QRScanNav} from "./screenName";
 import {Assets} from "../definitions/assets";
 import {$t} from "../locales";
 
 
 const TAB_BAR_ICONS = {
-    [LookUp]: Assets.etherum,
-    [QRScan]: Assets.qrCode,
+    [LookUpNav]: Assets.etherum,
+    [QRScanNav]: Assets.qrCode,
 };
 
 export const getTabBarIcon = (route, focused, tintColor) => {
@@ -16,8 +16,8 @@ export const getTabBarIcon = (route, focused, tintColor) => {
 };
 
 const TAB_BAR_LABELS = {
-    [LookUp]: 'screen.tabBar.lookup',
-    [QRScan]: 'screen.tabBar.qrScan',
+    [LookUpNav]: 'screen.tabBar.lookup',
+    [QRScanNav]: 'screen.tabBar.qrScan',
 };
 
 export const getTabBarLabel = (route) => $t(TAB_BAR_LABELS[route.name]);

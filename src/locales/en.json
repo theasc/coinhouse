@@ -3,6 +3,11 @@
     "tabBar": {
       "lookup": "Lookup",
       "qrScan": "QRScan"
+    },
+    "lookup": {
+      "headerTitle": "Coinhouse Ethersan",
+      "description": "Please enter a valide etherum address",
+      "lookupAction": "Lookup"
     }
   }
 }
